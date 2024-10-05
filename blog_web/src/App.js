@@ -2,8 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from "react";
 import Post from "./Post";
+import NewPost from "./NewPost";
 
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "http://127.0.0.1:8000";
 
 function App() {
 
@@ -37,9 +38,13 @@ function App() {
       <div className="app_posts">
         {
           posts.map((post) => {
-            return <Post key={post.id} post={post} />;
+            return <Post key={post.id} post={post}/>;
           })
         }
+      </div>
+
+      <div className="new_post">
+        <NewPost/>
       </div>
 
     </div>

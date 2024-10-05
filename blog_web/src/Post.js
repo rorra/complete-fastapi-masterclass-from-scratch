@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Post.css";
 
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "http://127.0.0.1:8000";
 
 function Post({post}) {
   const [imageUrl, setImageUrl] = useState("");
@@ -12,7 +12,7 @@ function Post({post}) {
 
   return (
     <div className="post">
-      <img className="post_image" src={imageUrl} alt={post.title} />
+      <img className="post_image" src={imageUrl} alt={post.title}/>
       <div className="post_content">
         <div className="post_title">{post.title}</div>
         <div className="post_creator">by {post.creator}</div>
