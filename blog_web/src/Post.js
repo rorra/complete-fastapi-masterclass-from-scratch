@@ -10,6 +10,27 @@ function Post({post}) {
     setImageUrl(`${BASE_URL}/${post.image_url}`);
   }, []);
 
+  const handleDelete = (e) => {
+    e?.preventDefault();
+
+    const requestOptions = {
+      method: 'DELETE',
+    };
+
+    fetch(`${BASE_URL}/posts/${post.id}`, requestOptions)
+      .then((response) => {
+        if (response.ok) {
+          window.location.reload();
+        } else {
+          throw response;
+        }
+      })
+      .catch((error) => {
+        console.error("Error deleting post: ", error);
+        alert(error);
+      });
+  };
+
   return (
     <div className="post">
       <img className="post_image" src={imageUrl} alt={post.title}/>
@@ -18,7 +39,7 @@ function Post({post}) {
         <div className="post_creator">by {post.creator}</div>
         <div className="post_text">{post.content}</div>
         <div className="post_delete">
-          <button onClick={null}>Delete post</button>
+          <button onClick={handleDelete}>Delete post</button>
         </div>
       </div>
 
